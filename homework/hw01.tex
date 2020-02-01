@@ -1,0 +1,56 @@
+\documentclass[letterpaper, 11pt]{article}
+%\usepackage[hmargin = 1in, vmargin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+% \doublespacing
+\setlength{\headheight}{14pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Gabriel Wallace}
+\lhead{Comp Sci 3130}
+
+\newcommand{\card}{\text{Card}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\hwnumber}[3]{\noindent\textbf{#1.} Section #2 \##3}
+
+\begin{document}
+\begin{center}
+	{\LARGE Homework 1}\\
+\end{center}
+
+\hwnumber{1}{1.1}{6}
+
+\begin{enumerate}[label = (\alph*)]
+  \item We find $\gcd(31415, 14142)$ by Euclid's Algorithm.
+    \begin{align*}
+      \gcd(31415, 14142) &= \gcd(14142, 3131)\\
+                         &= \gcd(3131, 1618)\\
+                         &= \gcd(1618, 1513)\\
+                         &= \gcd(1513, 105)\\
+                         &= \gcd(105, 43)\\
+                         &= \gcd(43, 19)\\
+                         &= \gcd(19, 5)\\
+                         &= \gcd(5, 4)\\
+                         &= \gcd(4, 1)\\
+                         &= \gcd(1, 0)\\
+                         &= 1
+    \end{align*}
+
+  \item We see that the number of iterations for Euclid's algorithm is 11. The
+    number of iterations for the method of consecutive integers is 14142, or
+    approximently 1286 times faster. 
+
+    Writing a quick Python program to run one million simulations reveals that,
+    on average, Euclid's algortihm takes about 11 iterations and the consecutive
+    integers method takes about 39960 iterations, or about 3633 times faster.
+\end{enumerate}
+
+\end{document}
