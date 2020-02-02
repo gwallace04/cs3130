@@ -111,13 +111,59 @@ to compute $A$ or $h_a$ respectively.
 
 \hwnumber{7}{2.1}{1}
 
+\begin{enumerate}[label = (\alph*)]
+  \item Computing the sum of $n$ numbers
+    \begin{enumerate}[label=(\roman*)]
+      \item $n$
+      \item Addition of two numbers
+      \item No
+    \end{enumerate}
+  \item Computing $n!$
+    \begin{enumerate}[label=(\roman*)]
+      \item $n$
+      \item Multiplication of two integers
+      \item No
+    \end{enumerate}
+  \item Finding the largest element in a list of $n$ numbers
+    \begin{enumerate}[label=(\roman*)]
+      \item $n$
+      \item Comparison of two objects
+      \item No
+    \end{enumerate}
+\end{enumerate}
 
-\hwnumber{8}{2.1}{2}
+\hwnumber{8}{2.1}{2(a)}
 
+The basic operation is addition of two numbers. Let $T$ be the total number of
+operations and let $N$ be the total number of elements in the two matrices.
+Since the number of elements of an $n \times n$ matrix is $n^2$, then $N =
+2n^2$. And since we add two matrices straight across, $T = n^2$. Therefore, $T =
+N / 2$. 
 
-\hwnumber{9}{2.1}{4}
+\hwnumber{9}{2.1}{4(a)}
+
+In the best case, we would get lucky and select a matching pair in the first two
+selections. So the smallest number of gloves selected is 2. 
+
+In the worst case, we would select every glove of a particular handedness, so we
+would have 11 gloves. In the next selection, we would be guaranteed a match. So
+the largest number of gloves selected is 12. 
 
 
 \hwnumber{Bonus}{1.2}{2}
+
+The order of traversals that will take 17 minutes is as follows:
+
+\begin{center}
+  \begin{tabular}{c | c | c}
+    People sent & Time taken & Total time \\
+    \hline
+    1, 2 & 2 min & 2 min \\ 
+    2 & 2 min & 4 min \\
+    3, 4 & 10 min & 14 min \\
+    1 & 1 min & 15 min \\
+    1, 2 & 2 min & 17 min \\
+  \end{tabular}
+\end{center}
 
 \end{document}
