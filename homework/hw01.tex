@@ -19,7 +19,8 @@
 
 \newcommand{\inv}{^{-1}}
 \newcommand{\abs}[1]{\lvert #1 \rvert}
-\newcommand{\hwnumber}[3]{\noindent\textbf{#1.} Section #2 \##3}
+\newcommand{\hwnumber}[3]{\medskip \noindent\textbf{#1.} Section #2 \##3 \smallskip}
+\newcommand{\Mod}[1]{\ \mathrm{mod}\ #1}
 
 \begin{document}
 \begin{center}
@@ -52,5 +53,61 @@
     on average, Euclid's algortihm takes about 11 iterations and the consecutive
     integers method takes about 39960 iterations, or about 3633 times faster.
 \end{enumerate}
+
+\hwnumber{2}{1.1}{8}
+
+Let $m, n \in \Z$ with $m < n$. Applying Euclid's algorithm, we have $\gcd(m, n)
+= \gcd(n, m \Mod{n})$. But since $m < n$, then $m \Mod{n} = m$, so $\gcd(n, m
+\Mod{n}) = \gcd(n, m)$. In other words, the two inputs are swapped. 
+
+The inputs swapping can only happen on the first iteration and if $m < n$. For
+any integers $a, b$, $a > b \Mod{a}$, since $b \Mod{a}$ is the
+remainder of $b$ when devided by a and the remainder is smaller than the
+quotient, by the Division Algorithm. 
+
+\newpage
+
+\hwnumber{3}{1.2}{3}
+
+Only (a) is an algorithm (provided we know how to compute a square root). The
+problems with (b) and (c) is that they are ambiguous, i.e we are not given how
+to compute $A$ or $h_a$ respectively. 
+
+\hwnumber{4}{1.2}{5}
+
+\begin{enumerate}[label = (\alph*)]
+  \item Let $n$ be a positive integer and let $r = n - 2a$, where $a$ is 
+    a positive integer. Then prepend $r$ to the binary representation of 
+    $n$. Then assign $n$ to $a$ and repeat this process until $n = 0$. 
+
+  \item 
+
+\end{enumerate}
+
+
+\hwnumber{5}{1.3}{4}
+\begin{enumerate}[label = (\alph*)]
+  \item Let the two islands and the two banks of the river be the vertices and the
+    bridges be the edges of a graph. Now we reformulate the question in graph
+    theoretic terms: does this graph have an Euler cycle?
+
+   \item 
+\end{enumerate}
+
+
+
+\hwnumber{6}{1.3}{8}
+
+
+\hwnumber{7}{2.1}{1}
+
+
+\hwnumber{8}{2.1}{2}
+
+
+\hwnumber{9}{2.1}{4}
+
+
+\hwnumber{Bonus}{1.2}{2}
 
 \end{document}
