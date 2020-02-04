@@ -4,6 +4,10 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
 % \doublespacing
 \setlength{\headheight}{14pt}
 \usepackage{fancyhdr}
@@ -47,10 +51,10 @@
 
   \item We see that the number of iterations for Euclid's algorithm is 11. The
     number of iterations for the method of consecutive integers is 14142, or
-    approximently 1286 times faster. 
+    approximately 1286 times faster. 
 
     Writing a quick Python program to run one million simulations reveals that,
-    on average, Euclid's algortihm takes about 11 iterations and the consecutive
+    on average, Euclid's algorithm takes about 11 iterations and the consecutive
     integers method takes about 39960 iterations, or about 3633 times faster.
 \end{enumerate}
 
@@ -61,8 +65,8 @@ Let $m, n \in \Z$ with $m < n$. Applying Euclid's algorithm, we have $\gcd(m, n)
 \Mod{n}) = \gcd(n, m)$. In other words, the two inputs are swapped. 
 
 The inputs swapping can only happen on the first iteration and if $m < n$. For
-any integers $a, b$, $a > b \Mod{a}$, since $b \Mod{a}$ is the
-remainder of $b$ when devided by a and the remainder is smaller than the
+any integers $a$ and $b$, $a > b \Mod{a}$, since $b \Mod{a}$ is the
+remainder of $b$ when divided by $a$ and the remainder is smaller than the
 quotient, by the Division Algorithm. 
 
 \newpage
@@ -81,6 +85,19 @@ to compute $A$ or $h_a$ respectively.
     $n$. Then assign $n$ to $a$ and repeat this process until $n = 0$. 
 
   \item 
+    \begin{algorithmic}
+      \State //Input: an integer of size $n$
+      \State //Output: the binary representation of $n$ represented by the list 
+      $d_k, d_{k-1}, \dots, d_1, d_0$
+      \State
+      \State $k\gets 0$
+      \While {$n \not= 0$}
+        \State $b_k \gets n \Mod 2$
+        \State $n \gets \lfloor \frac{n}{2} \rfloor$
+        \State $k \gets k + 1$
+      \EndWhile
+    \end{algorithmic}
+
 
 \end{enumerate}
 
@@ -92,10 +109,36 @@ to compute $A$ or $h_a$ respectively.
     bridges be the edges of a graph. Now we reformulate the question in graph
     theoretic terms: does this graph have an Euler cycle?
 
-   \item 
+   \item The graph is below:
+
+     \begin{center}
+     \begin{tikzpicture}[shorten >=1pt,auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+       \node[main node] (1) {1};
+       \node[main node] (2) [below left of=1] {2};
+       \node[main node] (3) [below right of=2] {3};
+       \node[main node] (4) [below right of=1] {4};
+
+       \path[every node/.style={font=\sffamily\small}]
+         (1) edge [bend right] node[left] { } (2)
+         (2) edge node [right] {} (1)
+             edge node {} (4)
+             edge [bend right] node[left] {} (3)
+         (3) edge node [right] {} (2)
+             edge [bend right] node[right] {} (4)
+         (4) edge [bend right] node[right] {} (1);
+     \end{tikzpicture}
+   \end{center}
+
+    From graph theory we have a theorem:
+    A (connected) graph has an Euler cycle if and only if every vertex has even
+    degree. In this graph, every vertex has an odd degree. So, we need to build
+    two more edges: one connecting (1) and (3) and the other connecting (2)
+    and (4). If all we care about is an Eulerian path (that is we only care
+    about traversing every edge and our starting and stopping point does not
+    matter), then just one extra edge would suffice. 
 \end{enumerate}
-
-
 
 \hwnumber{6}{1.3}{8}
 
@@ -104,7 +147,40 @@ to compute $A$ or $h_a$ respectively.
     and two vertices are connected if they share an edge on the map. Doing so,
     we have the following graph:
 
+    \begin{center}
+    \begin{tikzpicture}[shorten >=1pt,auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+       \node[main node] (1) {1};
+       \node[main node] (2) [below left of=1] {2};
+       \node[main node] (3) [below of=1] {3};
+       \node[main node] (4) [below right of=1] {4};
+       \node[main node] (5) [below left of=3] {5};
+       \node[main node] (6) [below right of=3] {6};
+
+
+       \path[every node/.style={font=\sffamily\small}]
+         (1) edge [right] node[left] {} (2)
+             edge node {} (3)
+         (2) edge node {} (3)
+             edge node {} (5)
+         (3) edge node [right] {} (2)
+             edge [right] node[right] {} (4)
+             edge node {} (5)
+             edge node {} (6)
+         (4) edge [right] node[right] {} (1)
+             edge node {} (6)
+         (5) edge node {} (6);
+      
+    \end{tikzpicture}
+  \end{center}
+
+
   \item We can color the graph with four colors like so:
+    \begin{figure}[h!]
+      \centering
+      \includegraphics[width=0.3\linewidth]{4_colors.png}
+    \end{figure}
 
 \end{enumerate}
 
