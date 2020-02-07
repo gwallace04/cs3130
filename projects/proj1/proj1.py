@@ -1,3 +1,5 @@
+import timeit
+
 def fib_rec(n):
   if n == 0 or n == 1:
     return n
@@ -20,5 +22,9 @@ def fib_itr(n):
   
 
 if __name__ == "__main__":
-  for i in range(100):
-    print("Rec: {} Itr: {}".format(fib_rec(i), fib_itr(i)))
+  for i in range(0, 100):
+    # time_rec = timeit.timeit("fib_rec(i)", "from __main__ import fib_rec, i")
+    time_itr = timeit.timeit("fib_itr(i)", "from __main__ import fib_itr, i")
+    print("{},{}".format(i, time_itr))
+  
+  
