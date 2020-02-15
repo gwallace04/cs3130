@@ -4,6 +4,7 @@ PART C: This program compares the running time of the recursive and the
 Author: Gabriel Wallace
 """
 
+import csv
 import timeit
 
 from part_a import fib_rec
@@ -39,4 +40,13 @@ if __name__ == "__main__":
     rec = create_dataset(fib_rec, 20, "n", "time")
     #Use 100 for iterative
     itr = create_dataset(fib_itr, 100, "n", "time")
+
+    #Write to the csv files
+    with open("recursive.csv", "wt") as f:
+        csv_writer = csv.writer(f)
+        csv_writer.writerows(rec)
+
+    with open("iterative.csv", "wt") as f:
+        csv_writer = csv.writer(f)
+        csv_writer.writerows(itr)
 
