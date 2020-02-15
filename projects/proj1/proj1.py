@@ -22,9 +22,10 @@ def fib_itr(n):
   
 
 if __name__ == "__main__":
-  for i in range(0, 100):
-    # time_rec = timeit.timeit("fib_rec(i)", "from __main__ import fib_rec, i")
+  print("n,time_itr,time_rec")
+  for i in range(0, 21):
+    time_rec = timeit.timeit("fib_rec(i)", "from __main__ import fib_rec, i")
     time_itr = timeit.timeit("fib_itr(i)", "from __main__ import fib_itr, i")
-    print("{},{}".format(i, time_itr))
+    print("{},{},{}".format(i, time_itr, time_rec))
   
   
