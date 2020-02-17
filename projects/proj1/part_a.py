@@ -11,5 +11,10 @@ def fib_rec(n: int) -> int:
 
 if __name__ == "__main__":
     print("Let's find the nth Fibonacci number, F_n, recursively")
-    n = int(input("Enter an integer: "))
-    print("F_{} = {}".format(n, fib_rec(n)))
+    print("Type \"exit\" or \"quit\" to exit\n")
+    while True:
+        n = input("Enter an integer: ") 
+        if n == "exit" or n == "quit":
+            break
+        print("F_{} = {}".format(n, fib_rec(int(n))))
+        
