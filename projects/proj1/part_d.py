@@ -30,7 +30,7 @@ if __name__ == "__main__":
     print("Find the largest Fibonacci number with n digits")
     n = int(input("Enter an integer (< 100): "))
     while n >= 100:
-        print("ERROR: Integer larger than 100")
+        print("ERROR: Integer larger than or equal to 100")
         n = int(input("Enter an integer (< 100): "))
     fib_list = fib_with_n_digits(n)
     fib_string = ''.join(map(str, fib_list))
