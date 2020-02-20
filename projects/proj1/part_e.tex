@@ -32,7 +32,34 @@
 \end{center}
 
 \section*{Theoretical Analysis}
+We have two algorithms to find the \(n\)th Fibonacci number, \(F_n\), one recursive and
+one iterative. We proceed with the theoretical analysis of these two
+algorithms, and find the order of growth of each.
+
 \subsection*{Recursive algorithm}
+We have the following recursive definition for \(F_n\): 
+\[F(n) = F(n - 1) + F(n - 2) \]
+To find the general form for \(F(n)\), we solve a linear homogenous recurrence
+relation, and have
+\[F(n) = \frac{1}{\sqrt{5}}(\varphi) ^ n - 
+\frac{1}{\sqrt{5}} (\hat{\varphi}) ^ n\]
+with
+\[\varphi = \left(\frac{1 + \sqrt{5}}{2} \right) \text{ and } 
+\hat{\varphi} = \left(\frac{1 - \sqrt{5}}{2} \right)\]
+
+To find the order of growth of \(F(n)\), we need to calculate the limit as
+\(n\) approaches infinity. Since \(\abs{\hat{\varphi}} \approx 0.62 < 1\), then
+\[\lim_{n \to \infty} \frac{1}{\sqrt{5}} (\hat{\varphi})^n = 0.\]
+And since, \(\abs{\varphi} \approx 1.62 > 1\), then 
+\[\lim_{n \to \infty} \frac{1}{\sqrt{5}} (\varphi)^n = \infty.\]
+So,
+\[\lim_{n \to \infty} F(n) = \frac{1}{\sqrt{5}}\lim_{n \to \infty}(\varphi)^n +
+(\hat{\varphi})^n = \frac{1}{\sqrt{5}}\lim_{n \to \infty}(\varphi)^n = \infty.\]
+
+\medskip
+
+Thus, \(F(n) \in \Theta(\varphi^n)\) or \(F(n) \in \mathcal{O}(2^n)\)
+
 \subsection*{Iterative algorithm}
 
 
