@@ -11,7 +11,7 @@ iterative %>%
   geom_point() +
   geom_smooth(se = FALSE) + 
   ylab("Time (sec)") 
-ggsave("recursive_plot.png")
+ggsave("iterative_plot.png")
 
 
 recursive %>% 
@@ -20,5 +20,5 @@ recursive %>%
   geom_point() +  
   geom_smooth(se = FALSE) +
   ylab("Time (sec)")
-ggsave("iterative_plot.png")
+ggsave("recursive_plot.png")
 

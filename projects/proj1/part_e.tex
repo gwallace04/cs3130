@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
+\usepackage{microtype}
 % \doublespacing
 \setlength{\headheight}{14pt}
 \usepackage{fancyhdr}
@@ -86,6 +87,25 @@ completed in constant time, we have
 
 So \(C(n) \in \Theta(n)\)
 
+\newpage
+
 \section*{Empirical Analysis}
+Running the code from part (C), we have created two csv files
+\texttt{iterative.csv} and \texttt{recursive.csv} for the respective
+algorithms. We use the R programming language to create two plots of results
+from part (C). We have the raw data in the black dots, and then a calculated
+trendline in blue.  
+
+\begin{figure}[h]
+    \includegraphics[width=\linewidth]{iterative_plot.png}
+\end{figure}
+
+\begin{figure}[h]
+    \includegraphics[width=\linewidth]{recursive_plot.png}
+\end{figure}
+
+From these plots, we can see that our theoretical analysis is correct. The
+iterative and recursive algorithms have orders of growth of linear and
+exponential time respectively. 
 
 \end{document}
