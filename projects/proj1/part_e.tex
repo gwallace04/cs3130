@@ -61,7 +61,30 @@ So,
 Thus, \(F(n) \in \Theta(\varphi^n)\) or \(F(n) \in \mathcal{O}(2^n)\)
 
 \subsection*{Iterative algorithm}
+We have the following pseudocode of the iterative algorithm from the book on
+page 82:
 
+\medskip
+\noindent\textbf{ALGORITHM} \(Fib(n)\)
+\begin{algorithmic}
+    \State //Computes the nth Fibonacci number iteratively by using its definition
+    \State //Input: A nonnegative integer \(n\)
+    \State //Output: The \(n\)th Fibonacci number
+    \State \(F[0] \gets 0, F[1] \gets 1\)
+    \For {\(i \gets 2 \textbf{ to } n\)}
+    \State \(F[i] \gets F[i - 1] + F[i - 2]\)
+    \EndFor
+    \State\Return \(F[n]\)
+\end{algorithmic}
+\medskip
+
+The first two assignments to \(F[0]\) and \(F[1]\) are of constant time, so the
+efficiency of the algorithm is dependent on the \textbf{for} loop. Since the 
+operation that occurs on every iteration of the loop is addition, which can be
+completed in constant time, we have
+\[C(n) = \sum_{i = 2}^{n} 1 = (n - 2 + 1) = n - 1\]
+
+So \(C(n) \in \Theta(n)\)
 
 \section*{Empirical Analysis}
 
