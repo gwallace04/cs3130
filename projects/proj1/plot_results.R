@@ -11,11 +11,14 @@ iterative %>%
   geom_point() +
   geom_smooth(se = FALSE) + 
   ylab("Time (sec)") 
+ggsave("recursive_plot.png")
 
 
 recursive %>% 
   ggplot(aes(x = n, y = time)) +
+  ggtitle("Recursive algorithm") +
   geom_point() +  
   geom_smooth(se = FALSE) +
   ylab("Time (sec)")
+ggsave("iterative_plot.png")
 
