@@ -1,5 +1,19 @@
 import random
 
+def bubble(A: list) -> list:
+    """
+    Sorts a given list with bubble sort
+    input: A - a list of orderable elements
+    output: a list sorted in nondecreasing order
+    """
+    n = len(A)
+    for i in range(n - 2):
+        print(A)
+        for j in range(n - 2 - i):
+            if A[j + 1] < A[j]:
+                A[j], A[j + 1] = A[j + 1], A[j]
+
+
 def selection(A: list) -> list:
     """
     Sorts a given list with selection sort
@@ -20,4 +34,6 @@ if __name__ == "__main__":
     a = list("EXAMPLE")
 #    a = [89, 45, 68, 90, 29, 34, 17]
     selection(a)
+    print(" ")
+    bubble(a)
 
