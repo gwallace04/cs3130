@@ -13,11 +13,11 @@ def selection(A: list) -> list:
         for j in range(i + 1, n):
             if A[j] < A[min]:
                 min = j
-            A[i], A[min] = A[min], A[i]
+        A[i], A[min] = A[min], A[i]
 
 if __name__ == "__main__":
 #    a = [random.randint(0, 100) for iter in range(5)]
-    a = list("EXAMPLF")
+    a = list("EXAMPLE")
+#    a = [89, 45, 68, 90, 29, 34, 17]
     selection(a)
-    print(a)
 
