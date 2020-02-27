@@ -8,10 +8,11 @@ def bubble(A: list) -> list:
     """
     n = len(A)
     for i in range(n - 2):
-        print(A)
-        for j in range(n - 2 - i):
+        for j in range(n - 1 - i):
             if A[j + 1] < A[j]:
+                print(A)
                 A[j], A[j + 1] = A[j + 1], A[j]
+    return A
 
 
 def selection(A: list) -> list:
@@ -28,12 +29,12 @@ def selection(A: list) -> list:
             if A[j] < A[min]:
                 min = j
         A[i], A[min] = A[min], A[i]
+    return A
 
 if __name__ == "__main__":
 #    a = [random.randint(0, 100) for iter in range(5)]
     a = list("EXAMPLE")
 #    a = [89, 45, 68, 90, 29, 34, 17]
-    selection(a)
-    print(" ")
-    bubble(a)
+#    selection(a)
+    print(bubble(a))
 
