@@ -27,7 +27,7 @@ def bubble_with_swaps(A: list) -> list:
             if A[j + 1] < A[j]:
                 A[j], A[j + 1] = A[j + 1], A[j]
                 swapped = True
-        if swapped == False:
+        if not swapped:
             break
     return A
 
@@ -67,5 +67,7 @@ if __name__ == "__main__":
     a = list("EXAMPLE")
 #    a = [89, 45, 68, 90, 29, 34, 17]
 #    selection(a)
+    print(bubble_with_swaps(a))
+    a = list("EXAMPLE")
     print(bubble(a))
 
