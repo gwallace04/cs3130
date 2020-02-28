@@ -3,6 +3,7 @@ import unittest
 from proj2 import bubble
 from proj2 import bubble_with_swaps
 from proj2 import selection
+from proj2 import insertion
 
 
 class TestSortingAlgs(unittest.TestCase):
@@ -15,6 +16,7 @@ class TestSortingAlgs(unittest.TestCase):
         self._test_single_func(bubble, input_list)
         self._test_single_func(bubble_with_swaps, input_list)
         self._test_single_func(selection, input_list)
+        self._test_single_func(insertion, input_list)
 
     def test_with_empty_list(self):
         input_list = []

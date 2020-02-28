@@ -46,6 +46,22 @@ def selection(A: list) -> list:
         A[i], A[min] = A[min], A[i]
     return A
 
+def insertion(A: list) -> list:
+    """
+    Sorts a given list with insertion sort
+    input: A - a list of orderable elements
+    output: a list sorted in nondecreasing order
+    """
+    n = len(A)
+    for i in range(1, n):
+        v = A[i]
+        j = i - 1
+        while j >= 0 and A[j] > v:
+            A[j + 1] = A[j]
+            j = j - 1
+        A[j + 1] = v
+    return A
+
 if __name__ == "__main__":
 #    a = [random.randint(0, 100) for iter in range(5)]
     a = list("EXAMPLE")
