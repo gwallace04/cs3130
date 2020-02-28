@@ -14,6 +14,23 @@ def bubble(A: list) -> list:
     return A
 
 
+def bubble_with_swaps(A: list) -> list:
+    """
+    Sorts a given list with improved bubble sort
+    input: A - a list of orderable elements
+    output: a list sorted in nondecreasing order
+    """
+    n = len(A)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - 1 - i):
+            if A[j + 1] < A[j]:
+                A[j], A[j + 1] = A[j + 1], A[j]
+                swapped = True
+        if swapped == False:
+            break
+    return A
+
 def selection(A: list) -> list:
     """
     Sorts a given list with selection sort
