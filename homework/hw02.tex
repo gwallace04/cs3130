@@ -100,4 +100,35 @@ So \(r_1 = -\frac{1}{2}\) and \(r_2 = 1\). So the general solution is
        &= \alpha_1 \left(-\frac{1}{2}\right)^n + \alpha_2\\
 \end{align*}
 
+\newpage
+\hwnumber{5}
+
+\begin{enumerate}[label = (\alph*)]
+  \item Let \(T(n) = 2T(\frac{n}{4}) + 1000\). So 
+    \[a = 2, b = 4, d = 0\]
+    Since 
+    \[a = 2 > 1 = b^d\]
+    then 
+    \[T(n) \in \Theta\left(n^{\log_4(2)}\right)\]
+  \item Let \(T(n) = 2T(\frac{n}{4}) + 1000n\). So 
+    \[a = 2, b = 4, d = 1\]
+    Since 
+    \[a = 2 < 4 = b^d\]
+    then 
+    \[T(n) \in \Theta(n)\]
+  \item Let \(T(n) = 2T(\frac{n}{4}) + 1000\sqrt{n}\). So 
+    \[a = 2, b = 4, d = \frac{1}{2}\]
+    Since 
+    \[a = 2 = 2 = b^d\]
+    then 
+    \[T(n) \in \Theta\left(\sqrt{n}\log(n)\right)\]
+  \item Let \(T(n) = 2T(\frac{n}{4}) + 1000n^2\). So 
+    \[a = 2, b = 4, d = 2\]
+    Since 
+    \[a = 2 < 16 = b^d\]
+    then 
+    \[T(n) \in \Theta\left(n^2\right)\]
+\end{enumerate}
+
+
 \end{document}
