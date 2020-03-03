@@ -130,5 +130,41 @@ So \(r_1 = -\frac{1}{2}\) and \(r_2 = 1\). So the general solution is
     \[T(n) \in \Theta\left(n^2\right)\]
 \end{enumerate}
 
+\newpage
+\hwnumber{6}
+In both parts, we denote E and E' to differentiate the two identical
+characters. 
+
+\begin{enumerate}[label = (\alph*)]
+  \item Sec 3.1 \#8 \\
+    We proceed with selection sort. \\
+    {
+    \centering
+    \begin{tabular}{l l l l l l l}
+      E & X & A & M & P & L & E' \\
+      A \textbar & X & E & M & P & L & E' \\
+      A & E \textbar & X & M & P & L & E' \\
+      A & E & E' \textbar & M & P & L & X  \\
+      A & E & E' & L \textbar & P & M & X  \\
+      A & E & E' & L & M \textbar & P & X  \\
+      A & E & E' & L & M & P \textbar & X 
+    \end{tabular}
+    }
+
+  \item Sec 3.1 \#11
+    We proceed with bubble sort. \\
+    {
+    \centering
+    \begin{tabular}{l l l l l l l}
+      E & X & A & M & P & L & E' \\
+      E & A & M & P & L & E' \textbar & X \\
+      A & E & M & L & E' \textbar  & P & X \\
+      A & E & L & E' \textbar & M & P & X \\
+      A & E & E' \textbar  & L & M & P & X \\
+      A & E \textbar  & E' & L & M & P & X \\
+      A \textbar  & E & E' & L & M & P & X \\
+    \end{tabular}
+    }
+\end{enumerate}
 
 \end{document}
