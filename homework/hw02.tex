@@ -67,9 +67,20 @@
 \[\{n, 1000n+3, 2^{\lg n}\}, \{n\cdot\lg n, \ln(n!)\}, \{n^2, 4^{\lg n}\},\]
 \[n^3, \left(\frac{3}{2}\right)^n, 2^n, n2^n, e^n, n!, (n + 1)!\]
 
+\newpage
 \hwnumber{3}
 
+Let \(T(n) = T(n/4) + B\), with initial condition \(T(1) = A\), and let \(n =
+4^k\). We proceed with backwards subsititution. 
+\begin{align*}
+  T(n) &= T(4^k)\\
+       &= T(4^{k - 1}) + B\\
+       &= T(4^{k - 2}) + B + B\\
+       &\;\;\;\;\;\vdots \\
+       &= T(1) + \underbrace{B + B + \dots + B}_{k \text{ times}}\\
+\end{align*}
 
-
+Thus, \(T(n) = T(1) + Bk = A + Bk\). Since \(n = 4^k\), then \(k = \log_4 n\)
+so \(T(n) = A + B\log_4 n\).
 
 \end{document}
