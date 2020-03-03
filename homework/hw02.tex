@@ -71,7 +71,7 @@
 \hwnumber{3}
 
 Let \(T(n) = T(n/4) + B\), with initial condition \(T(1) = A\), and let \(n =
-4^k\). We proceed with backwards subsititution. 
+4^k\). We proceed with backwards substitution. 
 \begin{align*}
   T(n) &= T(4^k)\\
        &= T(4^{k - 1}) + B\\
@@ -82,5 +82,22 @@ Let \(T(n) = T(n/4) + B\), with initial condition \(T(1) = A\), and let \(n =
 
 Thus, \(T(n) = T(1) + Bk = A + Bk\). Since \(n = 4^k\), then \(k = \log_4 n\)
 so \(T(n) = A + B\log_4 n\).
+
+\hwnumber{4}
+
+Let \(x(n) = \frac{1}{2}(x(n - 1) + x(n - 2))\). Then,
+\[x(n) - \frac{1}{2}x(n - 1) - \frac{1}{2}x(n - 2) = 0\]
+So we have the characteristic equation:
+\begin{align*}
+  r^2 - \frac{1}{2}r - \frac{1}{2} &= 0\\
+  2r^2 - r - 1 &= 0 \\
+  (2r + 1)(r - 1) &= 0
+\end{align*}
+
+So \(r_1 = -\frac{1}{2}\) and \(r_2 = 1\). So the general solution is 
+\begin{align*}
+  x(n) &= \alpha_1 \left(-\frac{1}{2}\right)^n + \alpha_2(1)^n\\
+       &= \alpha_1 \left(-\frac{1}{2}\right)^n + \alpha_2\\
+\end{align*}
 
 \end{document}
