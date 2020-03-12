@@ -1,4 +1,5 @@
 import random
+import pandas as pd
 
 def bubble(A: list) -> list:
     """
@@ -62,12 +63,19 @@ def insertion(A: list) -> list:
         A[j + 1] = v
     return A
 
+def create_dataset(func_list: list) -> pd.DataFrame:
+    num_list = [10, 20, 30]
+    for i in num_list:
+        print(i)
+        rand = [random.randrange(1, i) for x in range(1, i + 1)]
+        sorted = [x for x in range(1, i + 1)]
+        almost = [random.randrange(1, i) if x % 10 == 0 else x 
+                                         for x in range(1, i + 1)]
+
+
+    
+
 if __name__ == "__main__":
-#    a = [random.randint(0, 100) for iter in range(5)]
-    a = list("EXAMPLE")
-#    a = [89, 45, 68, 90, 29, 34, 17]
-#    selection(a)
-    print(bubble_with_swaps(a))
-    a = list("EXAMPLE")
-    print(bubble(a))
+    rand = [random.randrange(1, 10) for x in range(1, 10 + 1)]
+    create_dataset(rand)
 
