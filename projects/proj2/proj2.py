@@ -1,4 +1,5 @@
 import random
+import timeit
 import pandas as pd
 
 def bubble(A: list) -> list:
@@ -63,6 +64,12 @@ def insertion(A: list) -> list:
         A[j + 1] = v
     return A
 
+def wrapper(func, *args, **kwargs):
+    """ This is a wrapper to make the timeit call more readable """
+    def wrapped():
+        return func(*args. **kwargs)
+    return wrapped
+
 def create_dataset(func_list: list) -> pd.DataFrame:
     num_list = [10, 20, 30]
     for i in num_list:
@@ -71,6 +78,7 @@ def create_dataset(func_list: list) -> pd.DataFrame:
         sorted = [x for x in range(1, i + 1)]
         almost = [random.randrange(1, i) if x % 10 == 0 else x 
                                          for x in range(1, i + 1)]
+
 
 
     
