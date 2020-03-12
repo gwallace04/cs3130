@@ -67,23 +67,37 @@ def insertion(A: list) -> list:
 def wrapper(func, *args, **kwargs):
     """ This is a wrapper to make the timeit call more readable """
     def wrapped():
-        return func(*args. **kwargs)
+        return func(*args, **kwargs)
     return wrapped
 
 def create_dataset(func_list: list) -> pd.DataFrame:
     num_list = [10, 20, 30]
+    lol = list()
     for i in num_list:
-        print(i)
+        arrays = dict()
         rand = [random.randrange(1, i) for x in range(1, i + 1)]
+        arrays["random"] = rand
         sorted = [x for x in range(1, i + 1)]
+        arrays["sorted"] = sorted
         almost = [random.randrange(1, i) if x % 10 == 0 else x 
                                          for x in range(1, i + 1)]
+        arrays["almost"] = almost
+        header = ["alg", "arr_size", "arr_type", "time"]
+        for func in func_list:
+            for arr_type in arrays.keys(): 
+                temp = [func.__name__, i, arr_type]
+                wrapped = wrapper(func, arrays[arr_type])
+                time = min(timeit.repeat(wrapped, repeat = 10000, number = 1))
+                time *= 1000000
+                temp.append(time)
+                lol.append(temp)
 
-
-
-    
+    df = pd.DataFrame(lol, columns = header)
+    return df
 
 if __name__ == "__main__":
-    rand = [random.randrange(1, 10) for x in range(1, 10 + 1)]
-    create_dataset(rand)
+    func_list = [bubble, bubble_with_swaps, insertion, selection]
+    df = create_dataset(func_list)
+    df = df.sort_values("time")
+    print(df)
 
