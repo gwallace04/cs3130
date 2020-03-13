@@ -1,5 +1,6 @@
 import random
 import timeit
+import math
 import pandas as pd
 
 def bubble(A: list) -> list:
@@ -64,6 +65,44 @@ def insertion(A: list) -> list:
         A[j + 1] = v
     return A
 
+def merge(B: list, C: list) -> list:
+    """Merges two sorted arrays into one sorted array"""
+    i = 0
+    j = 0
+    k = 0
+    p = len(B)
+    q = len(C)
+    A = [0] * (p + q)
+    while i < p and j < q:
+        if B[i] <= C[j]:
+            A[k] = B[i]
+            i += 1
+        else:
+            A[k] = C[j]
+            j += 1
+        k += 1
+    if i == p:
+        A[k:(p + q + 1)] = C[j:q + 1]
+    else:
+        A[k:(p + q + 1)] = B[i:q + 1]
+    return A
+
+def mergesort(A: list) -> list:
+    """
+    Sorts a given list with merge sort
+    input: A - a list of orderable elements
+    output: a list sorted in nondecreasing order
+    """
+    n = len(A)
+    if n > 1:
+        f = math.floor(n / 2)
+        B = A[0:f]
+        C = A[f::]
+        B = mergesort(B)
+        C = mergesort(C)
+        A = merge(B, C)
+    return A
+
 def wrapper(func, *args, **kwargs):
     """ This is a wrapper to make the timeit call more readable """
     def wrapped():
@@ -71,7 +110,7 @@ def wrapper(func, *args, **kwargs):
     return wrapped
 
 def create_dataset(func_list: list) -> pd.DataFrame:
-    num_list = [10, 20, 30]
+    num_list = [1000, 10000, 100000]
     lol = list()
     for i in num_list:
         arrays = dict()
@@ -87,8 +126,8 @@ def create_dataset(func_list: list) -> pd.DataFrame:
             for arr_type in arrays.keys(): 
                 temp = [func.__name__, i, arr_type]
                 wrapped = wrapper(func, arrays[arr_type])
-                time = min(timeit.repeat(wrapped, repeat = 10000, number = 1))
-                time *= 1000000
+                time = min(timeit.repeat(wrapped, repeat = 5, number = 1))
+                time *= 1000
                 temp.append(time)
                 lol.append(temp)
 
@@ -96,8 +135,8 @@ def create_dataset(func_list: list) -> pd.DataFrame:
     return df
 
 if __name__ == "__main__":
-    func_list = [bubble, bubble_with_swaps, insertion, selection]
-    df = create_dataset(func_list)
-    df = df.sort_values("time")
-    print(df)
-
+#    A = [random.randrange(1, 10) for x in range(1, 10 + 1)]
+    A = [1, 1, 1, 3, 2, 5, 5, 8, 9, 7]
+    print(A)
+    A = mergesort(A)
+    print(A)
