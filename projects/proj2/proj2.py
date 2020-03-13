@@ -1,5 +1,5 @@
 import random
-import timeit
+import timeit 
 import math
 import pandas as pd
 
@@ -103,6 +103,34 @@ def mergesort(A: list) -> list:
         A = merge(B, C)
     return A
 
+def partition(A: list, start: int, end: int) -> int:
+    """https://stackabuse.com/quicksort-in-python/"""
+    pivot = A[start]
+    low = start + 1
+    high = end
+
+    while True:
+        while low <= high and A[high] >= pivot:
+            high = high - 1
+        while low <= high and A[low] <= pivot:
+            low = low + 1
+        if low <= high:
+            A[low], A[high] = A[high], A[low]
+        else:
+            break
+    A[start], A[high] = A[high], A[start]
+    print(A)
+
+    return high
+
+def quick(A, start, end):
+    if start >= end:
+        return
+    p = partition(A, start, end)
+    quick(A, start, p - 1)
+    quick(A, p + 1, end)
+    return A
+
 def wrapper(func, *args, **kwargs):
     """ This is a wrapper to make the timeit call more readable """
     def wrapped():
@@ -136,7 +164,6 @@ def create_dataset(func_list: list) -> pd.DataFrame:
 
 if __name__ == "__main__":
 #    A = [random.randrange(1, 10) for x in range(1, 10 + 1)]
-    A = [1, 1, 1, 3, 2, 5, 5, 8, 9, 7]
+    A = [5, 18, 19, 15, 3, 10]
     print(A)
-    A = mergesort(A)
-    print(A)
+
