@@ -119,11 +119,20 @@ def partition(A: list, start: int, end: int) -> int:
         else:
             break
     A[start], A[high] = A[high], A[start]
-    print(A)
 
     return high
 
-def quick(A, start, end):
+def quick(A: list, start = 0, end = None) -> list:
+    """
+    Sorts a given list with merge sort
+    input: A - a list of orderable elements
+    output: a list sorted in nondecreasing order
+    Note: This implementation of quick sort requires passing the start and end
+    as parameters due to Python's pass by object reference behavior. To be able
+    to call quicksort like the other algorithms, I've overloaded the parameters
+    """
+    if end == None:
+        end = len(A) - 1
     if start >= end:
         return
     p = partition(A, start, end)
@@ -138,7 +147,8 @@ def wrapper(func, *args, **kwargs):
     return wrapped
 
 def create_dataset(func_list: list) -> pd.DataFrame:
-    num_list = [1000, 10000, 100000]
+    #num_list = [1000, 10000, 100000]
+    num_list = [1000]
     lol = list()
     for i in num_list:
         arrays = dict()
@@ -155,7 +165,7 @@ def create_dataset(func_list: list) -> pd.DataFrame:
                 temp = [func.__name__, i, arr_type]
                 wrapped = wrapper(func, arrays[arr_type])
                 time = min(timeit.repeat(wrapped, repeat = 5, number = 1))
-                time *= 1000
+#                time *= 1000
                 temp.append(time)
                 lol.append(temp)
 
@@ -163,7 +173,12 @@ def create_dataset(func_list: list) -> pd.DataFrame:
     return df
 
 if __name__ == "__main__":
-#    A = [random.randrange(1, 10) for x in range(1, 10 + 1)]
-    A = [5, 18, 19, 15, 3, 10]
-    print(A)
+#    A = [x for x in range(1, 10000)]
+#    print(quick(A))
+    func_list = [bubble, bubble_with_swaps, 
+                insertion, selection,
+                mergesort]
+    df = create_dataset(func_list)
+    print(df)
+
 
