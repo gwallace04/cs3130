@@ -170,11 +170,26 @@ def create_dataset(func_list: list) -> pd.DataFrame:
     df = pd.DataFrame(lol, columns = header)
     return df
 
+def create_dataset_quick(func) -> pd.DataFrame:
+    lol = list()
+    for i in range(1, 900):
+        print(i)
+        temp = [i]
+        rand = [random.randrange(1, 10000) for x in range(1, i + 1)]
+        wrapped = wrapper(func, rand)
+        time = min(timeit.repeat(wrapped, repeat = 5, number = 1))
+        temp.append(time)
+        lol.append(temp)
+    
+    df = pd.DataFrame(lol, columns = ["size", "time"])
+    return df
+
 if __name__ == "__main__":
 #    A = [x for x in range(1, 10000)]
 #    print(quick(A))
     func_list = [bubble, bubble_with_swaps, 
                 insertion, selection,
                 mergesort]
-    df = create_dataset(func_list)
-    df.to_csv('results.csv', index=False)
+    df = create_dataset_quick(quick)
+    df.to_csv('results_quick.csv', index=False)
+    
