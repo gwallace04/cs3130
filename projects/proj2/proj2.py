@@ -134,7 +134,7 @@ def quick(A: list, start = 0, end = None) -> list:
     if end == None:
         end = len(A) - 1
     if start >= end:
-        return
+        return A
     p = partition(A, start, end)
     quick(A, start, p - 1)
     quick(A, p + 1, end)

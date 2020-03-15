@@ -6,6 +6,7 @@ from proj2 import bubble_with_swaps
 from proj2 import selection
 from proj2 import insertion
 from proj2 import mergesort
+from proj2 import quick
 
 class TestSortingAlgs(unittest.TestCase):
 
@@ -24,6 +25,8 @@ class TestSortingAlgs(unittest.TestCase):
         self._test_single_func(selection, copied_list)
         copied_list = copy.deepcopy(input_list)
         self._test_single_func(insertion, copied_list)
+        copied_list = copy.deepcopy(input_list)
+        self._test_single_func(quick, copied_list)
 
     def test_with_empty_list(self):
         input_list = []
