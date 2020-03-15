@@ -134,7 +134,7 @@ def quick(A: list, start = 0, end = None) -> list:
     if end == None:
         end = len(A) - 1
     if start >= end:
-        return A
+        return
     p = partition(A, start, end)
     quick(A, start, p - 1)
     quick(A, p + 1, end)
@@ -147,8 +147,7 @@ def wrapper(func, *args, **kwargs):
     return wrapped
 
 def create_dataset(func_list: list) -> pd.DataFrame:
-    #num_list = [1000, 10000, 100000]
-    num_list = [1000]
+    num_list = [1000, 10000, 100000]
     lol = list()
     for i in num_list:
         arrays = dict()
@@ -165,7 +164,6 @@ def create_dataset(func_list: list) -> pd.DataFrame:
                 temp = [func.__name__, i, arr_type]
                 wrapped = wrapper(func, arrays[arr_type])
                 time = min(timeit.repeat(wrapped, repeat = 5, number = 1))
-#                time *= 1000
                 temp.append(time)
                 lol.append(temp)
 
@@ -179,6 +177,4 @@ if __name__ == "__main__":
                 insertion, selection,
                 mergesort]
     df = create_dataset(func_list)
-    print(df)
-
-
+    df.to_csv('results.csv', index=False)
