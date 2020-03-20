@@ -1,3 +1,11 @@
+"""
+filename: proj2.py
+author: Gabriel Wallace
+This program runs several different sorting algorithms with different types of
+arrays of different sizes to get data for the empirical analysis of the sorting
+algorithms. 
+"""
+
 import random
 import timeit 
 import math
@@ -147,6 +155,7 @@ def wrapper(func, *args, **kwargs):
     return wrapped
 
 def create_dataset(func_list: list) -> pd.DataFrame:
+    """Create the final dataset"""
     num_list = [1000, 10000, 100000]
     lol = list()
     for i in num_list:
@@ -171,6 +180,7 @@ def create_dataset(func_list: list) -> pd.DataFrame:
     return df
 
 def create_dataset_quick(func) -> pd.DataFrame:
+    """Create the dataset for quicksort"""
     lol = list()
     for i in range(1, 900):
         print(i)
@@ -185,11 +195,11 @@ def create_dataset_quick(func) -> pd.DataFrame:
     return df
 
 if __name__ == "__main__":
-#    A = [x for x in range(1, 10000)]
-#    print(quick(A))
     func_list = [bubble, bubble_with_swaps, 
                 insertion, selection,
                 mergesort]
+    df = create_dataset(func_list)
+    df.to_csv('results.csv', index=False)
     df = create_dataset_quick(quick)
     df.to_csv('results_quick.csv', index=False)
     
