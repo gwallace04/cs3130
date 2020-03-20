@@ -150,10 +150,18 @@ scenario), we quickly hit Python's recursion stack limit of 1000. This is true
 even for random arrays bigger than around a 1000. Thus, quicksort was not
 included with the other algorithms. We did, however, run quicksort on arrays of
 random elements to confirm our theoretical analysis. The plot of the analysis
-can be found in figure BLANK. 
+can be found in figure \ref{fig:quick}. 
 
 \begin{figure}[h]
   \includegraphics[width=\linewidth]{quick.png}
+  \label{fig:quick}
 \end{figure}
+
+From this plot, we can see that our empirical analysis supports our theoretical
+analysis that quicksort is of efficiency \(\Theta(n \log n)\). 
+
+\appendix
+\section{Tables of Raw Data}
+Test
 
 \end{document}
