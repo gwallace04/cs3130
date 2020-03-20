@@ -11,19 +11,16 @@ plot_results <- function(df, title, filename = "temp.png") {
 #    geom_smooth(se = FALSE) + 
     ylab("Time (sec)") 
     
-#  ggsave(filename)
+  ggsave(filename, width = 6, height = 3, units = "in")
 }
 
 results = read_csv('results.csv')
-results_quick = read_csv('results_quick.csv')
 
-bubble <- results %>% filter(alg == 'bubble')
+bubble_with_swaps <- results %>% filter(alg == 'bubble_with_swaps')
 insertion <- results %>% filter(alg == 'insertion')
+mergesort <- results %>% filter(alg == 'mergesort')
 
-to_exclude = c("bubble", "selection")
-no_bubble_or_selection <- results %>% filter(!alg %in% to_exclude)
-
-plot_results(results, "All")
-
-plot_results(no_bubble_or_insertion, "No bubble or selection")
-
+plot_results(bubble_with_swaps, "Bubble with swaps", "bubble_with_swaps.png")
+plot_results(insertion, "Insertion", "insertion.png")
+plot_results(mergesort, "Merge sort", "mergesort.png")
+plot_results(results, "All", "all.png")
