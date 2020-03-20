@@ -143,13 +143,17 @@ necessarily mean they are as fast as one another.
   \label{table:random}
 \end{table}
 
-\subsection{Quick sort}
+\subsection{Quicksort}
 The space efficiency of quicksort is \(\Theta(n)\). Therefore, in our code,
 when we try to apply quicksort to an already sorted array (the worst case
 scenario), we quickly hit Python's recursion stack limit of 1000. This is true
 even for random arrays bigger than around a 1000. Thus, quicksort was not
 included with the other algorithms. We did, however, run quicksort on arrays of
-random elements to confirm our theoretical analysis. The plot of the analyisis
+random elements to confirm our theoretical analysis. The plot of the analysis
 can be found in figure BLANK. 
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{quick.png}
+\end{figure}
 
 \end{document}
