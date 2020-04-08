@@ -34,6 +34,36 @@
 	{\LARGE Homework 3}\\
 \end{center}
 
-\hwnumber{1} 
+\hwnumber{1}
+
+We search for the substring ``ABX" in the string
+``ABCDABCDABCDABXD" Successful matches are in bold and unsuccessful are in
+regular text. 
+
+\begin{center}
+  \begin{tabular}{cccccccccccccccc}
+    A & B & C & D & A & B & C & D & A & B & C & D & A & B & X & D \\
+    \hline
+    \textbf{A} & \textbf{B} & X \\
+               & A \\
+               & & A \\
+               & & & A \\
+               & & & & \textbf{A} & \textbf{B} & X \\
+               & & & & & A \\
+               & & & & & & A \\
+               & & & & & & & A \\
+               & & & & & & & & \textbf{A} & \textbf{B} & X \\
+               & & & & & & & & & A \\
+               & & & & & & & & & & A \\
+               & & & & & & & & & & & A \\
+               & & & & & & & & & & & & \textbf{A} & \textbf{B} & \textbf{X} \\
+  \end{tabular}
+\end{center}
+
+We see that there are 9 successful and 12 unsuccessful matches. 
+
+\hwnumbersec{2}{3.2}{8 (a)}
+
+
 
 \end{document}
