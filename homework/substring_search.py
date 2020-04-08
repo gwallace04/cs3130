@@ -21,7 +21,20 @@ def string_match(text: str, sub: str) -> dict:
     matches['index'] = -1
     return matches
 
+def count_substrings(text: str, start = 'A', end = 'B') -> int:
+    count = 0
+    n = len(text)
+    for i in range(n):
+        if text[i] == start:
+            for j in range(i, n):
+                if text[j] == end:
+                    count += 1
+    return count
+
 if __name__ == "__main__":
     a = "ABCDABCDABCDABXD"
     b = "ABX"
     print(string_match(a, b))
+    print(count_substrings("CABAAXBYB"))
+    print(count_substrings("ABBB"))
+    
