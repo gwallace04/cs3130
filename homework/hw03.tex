@@ -9,6 +9,7 @@
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{mathtools}
+\usepackage[linguistics]{forest}
 % \doublespacing
 \setlength{\headheight}{14pt}
 \usepackage{fancyhdr}
@@ -195,7 +196,52 @@ However, the left subarray is a singleton, so no swaps occur. Thus, \(s = 3 = k
 
 \hwnumbersec{8}{5.1}{6}
 
-INSERT PICTURE HERE
+For the first half of the tree we have,
+
+\begin{center}
+\begin{forest}
+for tree={rectangle, draw}
+[\text{E, X, A, M, P, L, E'}
+	[\text{E, X, A}
+	[\text{E}]
+	[\text{X, A}
+		[\text{X}] [\text{A}]
+	]
+	]
+	[\text{M, P, L, E'}
+		[\text{M, P}
+			[\text{M}] [\text{P}]
+		]
+	[\text{L, E'}
+	[\text{L}] [\text{E'}]
+	]
+	]
+]
+\end{forest}
+\end{center}
+
+Merging back, we get
+\begin{center}
+\begin{forest}
+for tree={rectangle, draw, grow=north}
+[\text{A, E, E', L, M, P, X}
+	[\text{E', L, M, P}
+		[\text{E', L}
+			[\text{E'}] [\text{L}]
+		]
+		[\text{M, P}
+			[\text{P}] [\text{M}]
+		]
+	]
+	[\text{A, E, X}
+		[\text{A, X}
+			[\text{A}] [\text{X}]	
+		]
+		[\text{E}]
+	]
+]
+\end{forest}
+\end{center}
 
 \hwnumbersec{9}{5.2}{5 (a, b)}
 
@@ -206,5 +252,27 @@ INSERT PICTURE HERE
     empty subarray every time the array is partitioned. Thus, this is the worst
     case input. 
 \end{enumerate}
+
+\hwnumbersec{10}{5.3}{8 (a)}
+
+\begin{center}
+\begin{forest}
+	[2
+		[3
+			[9]
+			[0
+				[1]
+				[2]
+			]
+		]
+		[8
+			[7, grow = 300
+				[6]
+			]
+			[5]
+		]
+	]
+\end{forest}
+\end{center}
 
 \end{document}
