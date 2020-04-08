@@ -64,6 +64,48 @@ We see that there are 9 successful and 12 unsuccessful matches.
 
 \hwnumbersec{2}{3.2}{8 (a)}
 
+\Alg{CountSubstrings(T[0 \dots n])}
+\begin{algorithmic}
+  \State \(count \gets 0\)
+  \For{\(i \gets 0 \To n - 1\)}
+    \If {\(T[i] = `A`\)}
+      \For{\(j \gets i \To n\)} 
+        \If{\(T[j] = `B`\)}
+          \(count \gets count + 1\)
+        \EndIf
+      \EndFor
+    \EndIf
+  \EndFor
+\end{algorithmic}
 
+\medskip
+
+In the best case, we have a string with no A's in it, and we never
+enter the second for loop. Thus, we would only iterate through the string
+once, so 
+\[C_B(n) \in \Theta(n) \]
+
+In the worst case, we would have a string of just A's, so we would enter the
+second loop every single time. Thus, we have
+
+\begin{align*}
+  C_W(n) &= \sum_{i=0}^{n-1} \sum_{j=i}^{n} 1 \\
+         &= \sum_{i=0}^{n-1} (n - i + 1) \\
+         &= (n + 1) + (n + 0) + \dots + 1 \\
+         &= \frac{(n+2)(n+1)}{2}
+\end{align*}
+So,
+\[C_W(n) \in \Theta(n^2)\]
+
+\hwnumbersec{3}{3.4}{8}
+
+If we have an array of \(n\) elements, then we can generate a permutation of the
+array and then check if that permutation is ordered. WE will always have to
+make \(n -1\) comparisons, and at worst, we'll have to check \(n!\)
+permutations. Thus, we'll have to make at most \((n-1)n!\) comparisons. So the
+efficiency of the worst case is 
+\[C_W(n) \in O((n + 1)!)\]
+
+\hwnumbersec{4}{4.1}{7}
 
 \end{document}
