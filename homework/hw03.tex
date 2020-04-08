@@ -108,4 +108,48 @@ efficiency of the worst case is
 
 \hwnumbersec{4}{4.1}{7}
 
+\begin{center}
+  \begin{tabular}{l l l l l l l}
+    E \textbar & X & A & M & P & L & E' \\
+    E & X \textbar & A & M & P & L & E' \\
+    A & E & X \textbar & M & P & L & E' \\
+    A & E & M & X \textbar & P & L & E' \\
+    A & E & M & P & X \textbar & L & E' \\
+    A & E & L & M & P & X \textbar & E' \\
+    A & E & E' & L & M & P & X \\
+  \end{tabular}
+\end{center}
+
+\hwnumbersec{5}{4.1}{11 (a)}
+
+The array with the largest number of inversion are reverse sorted arrays, since
+every \(A[i]\) would be larger than every subsequent element. Thus, they would
+have
+\[
+  \sum_{i=0}^{n-1} (n - 1 - i) = (n - 1) + (n - 2) + \dots + 2 + 1 = \frac{n(n-1)}{2} 
+\]
+number of inversions.
+
+The smallest number would be sorted arrays and they would have 0 inversions. 
+
+\hwnumbersec{6}{4.4}{8 (a, b, c, d)}
+
+\begin{enumerate}[label = (\alph*)]
+  \item Decrease by a constant factor
+  \item \[C(n) = C\left(\frac{n}{3}\right) + 2\]
+    with \(C(1) = 1\) and \(n = 3^k\)
+  \item 
+    \begin{align*}
+      C(n) &= C(3^k) \\
+           &= C(3^{k-2}) + C(3^{k-1}) + 2 + 2\\
+           &\;\;\;\;\;\vdots \\
+           &= C(3^{k-k}) + \underbrace{2 + 2 + \dots + 2}_{k \text{ times}}\\
+           &= 1 + 2k
+    \end{align*}
+    Since \(n = 3^k\), then \(k = \log_3 n\). So \(C(n) = 2\log_3 n + 1\).
+  \item The efficiency for binary search is \(2\log_2 n + 1\). Since the base
+    of the log is smaller for binary than ternary search, then ternary is more
+    efficient. However, both algorithms are of the same efficiency class. 
+\end{enumerate}
+
 \end{document}
