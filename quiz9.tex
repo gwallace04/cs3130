@@ -1,0 +1,55 @@
+\documentclass[letterpaper, 11pt]{article}
+%\usepackage[hmargin = 1in, vmargin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage[linguistics]{forest}
+% \doublespacing
+\setlength{\headheight}{14pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Gabriel Wallace}
+\lhead{Comp Sci 3130}
+
+\newcommand{\card}{\text{Card}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\hwnumber}[1]{\medskip \noindent\textbf{#1.} \smallskip}
+\newcommand{\hwnumbersec}[3]{\medskip \noindent\textbf{#1.} Section #2 \##3 \smallskip}
+\newcommand{\Mod}[1]{\ \mathrm{mod}\ #1}
+\newcommand{\Alg}[1]{\medskip \noindent\textbf{ALGORITHM} \( #1 \)} 
+\newcommand{\To}{\textbf{ to }}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\begin{document}
+\begin{center}
+	{\LARGE Quiz 9}\\
+\end{center}
+
+\hwnumber{1} The smallest number with \(n\) digits is always of the form
+\(10^{n-1}\). Thus the smallest product, and therefore the smallest number
+digits is 
+\[10^{n-1} \times 10^{n-1} = 10^{2n-2},\]
+which has \(2n-1\) digits.
+
+
+\hwnumber{2} The \(n\log n\) barrier is the theoretical lower bound for the
+average case efficiency of any comparison based sorting algorithm. 
+
+
+\hwnumber{3} If there are no equal elements in the array then the loop would
+never break early, thus there would be \(n - 1\) comparisons.
+
+\end{document}

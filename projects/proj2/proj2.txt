@@ -1,3 +1,4 @@
+--------------------------------------CODE--------------------------------------
 """
 filename: proj2.py
 author: Gabriel Wallace
@@ -203,3 +204,6 @@ if __name__ == "__main__":
     df = create_dataset_quick(quick)
     df.to_csv('results_quick.csv', index=False)
     
+-------------------------------------OUTPUT-------------------------------------
+Two csv files called "results.csv" and "results_quick.csv" that I have also
+uploaded to Canvas. 

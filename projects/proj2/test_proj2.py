@@ -1,10 +1,12 @@
 import unittest
+import copy
 
 from proj2 import bubble
 from proj2 import bubble_with_swaps
 from proj2 import selection
 from proj2 import insertion
-
+from proj2 import mergesort
+from proj2 import quick
 
 class TestSortingAlgs(unittest.TestCase):
 
@@ -13,17 +15,26 @@ class TestSortingAlgs(unittest.TestCase):
         self.assertEqual(func(input_list), expected_list)
 
     def _test_all_funcs(self, input_list):
-        self._test_single_func(bubble, input_list)
-        self._test_single_func(bubble_with_swaps, input_list)
-        self._test_single_func(selection, input_list)
-        self._test_single_func(insertion, input_list)
+        copied_list = copy.deepcopy(input_list)
+        self._test_single_func(bubble, copied_list)
+        copied_list = copy.deepcopy(input_list)
+        self._test_single_func(mergesort, copied_list)
+        copied_list = copy.deepcopy(input_list)
+        self._test_single_func(bubble_with_swaps, copied_list)
+        copied_list = copy.deepcopy(input_list)
+        self._test_single_func(selection, copied_list)
+        copied_list = copy.deepcopy(input_list)
+        self._test_single_func(insertion, copied_list)
+        copied_list = copy.deepcopy(input_list)
+        self._test_single_func(quick, copied_list)
 
     def test_with_empty_list(self):
         input_list = []
         self._test_all_funcs(input_list)
 
     def test_with_random_integers(self):
-        input_list = [56, 18, 51, 6, 93, 6, 37, 57, 87, 67]
+#        input_list = [56, 18, 51, 6, 93, 6, 37, 57, 87, 67]
+        input_list = [1, 1, 1, 3, 2, 5, 5, 8, 9, 7]
         self._test_all_funcs(input_list)
 
     def test_with_sorted(self):

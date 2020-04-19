@@ -1,0 +1,278 @@
+\documentclass[letterpaper, 11pt]{article}
+%\usepackage[hmargin = 1in, vmargin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage[linguistics]{forest}
+% \doublespacing
+\setlength{\headheight}{14pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Gabriel Wallace}
+\lhead{Comp Sci 3130}
+
+\newcommand{\card}{\text{Card}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\hwnumber}[1]{\medskip \noindent\textbf{#1.} \smallskip}
+\newcommand{\hwnumbersec}[3]{\medskip \noindent\textbf{#1.} Section #2 \##3 \smallskip}
+\newcommand{\Mod}[1]{\ \mathrm{mod}\ #1}
+\newcommand{\Alg}[1]{\medskip \noindent\textbf{ALGORITHM} \( #1 \)} 
+\newcommand{\To}{\textbf{ to }}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\begin{document}
+\begin{center}
+	{\LARGE Homework 3}\\
+\end{center}
+
+\hwnumber{1}
+
+We search for the substring ``ABX" in the string
+``ABCDABCDABCDABXD" Successful matches are in bold and unsuccessful are in
+regular text. 
+
+\begin{center}
+  \begin{tabular}{cccccccccccccccc}
+    A & B & C & D & A & B & C & D & A & B & C & D & A & B & X & D \\
+    \hline
+    \textbf{A} & \textbf{B} & X \\
+               & A \\
+               & & A \\
+               & & & A \\
+               & & & & \textbf{A} & \textbf{B} & X \\
+               & & & & & A \\
+               & & & & & & A \\
+               & & & & & & & A \\
+               & & & & & & & & \textbf{A} & \textbf{B} & X \\
+               & & & & & & & & & A \\
+               & & & & & & & & & & A \\
+               & & & & & & & & & & & A \\
+               & & & & & & & & & & & & \textbf{A} & \textbf{B} & \textbf{X} \\
+  \end{tabular}
+\end{center}
+
+We see that there are 9 successful and 12 unsuccessful matches. 
+
+\hwnumbersec{2}{3.2}{8 (a)}
+
+\Alg{CountSubstrings(T[0 \dots n])}
+\begin{algorithmic}
+  \State \(count \gets 0\)
+  \For{\(i \gets 0 \To n - 1\)}
+    \If {\(T[i] = `A`\)}
+      \For{\(j \gets i \To n\)} 
+        \If{\(T[j] = `B`\)}
+          \(count \gets count + 1\)
+        \EndIf
+      \EndFor
+    \EndIf
+  \EndFor
+\end{algorithmic}
+
+\medskip
+
+In the best case, we have a string with no A's in it, and we never
+enter the second for loop. Thus, we would only iterate through the string
+once, so 
+\[C_B(n) \in \Theta(n) \]
+
+In the worst case, we would have a string of just A's, so we would enter the
+second loop every single time. Thus, we have
+
+\begin{align*}
+  C_W(n) &= \sum_{i=0}^{n-1} \sum_{j=i}^{n} 1 \\
+         &= \sum_{i=0}^{n-1} (n - i + 1) \\
+         &= (n + 1) + (n + 0) + \dots + 1 \\
+         &= \frac{(n+2)(n+1)}{2}
+\end{align*}
+So,
+\[C_W(n) \in \Theta(n^2)\]
+
+\hwnumbersec{3}{3.4}{8}
+
+If we have an array of \(n\) elements, then we can generate a permutation of the
+array and then check if that permutation is ordered. WE will always have to
+make \(n -1\) comparisons, and at worst, we'll have to check \(n!\)
+permutations. Thus, we'll have to make at most \((n-1)n!\) comparisons. So the
+efficiency of the worst case is 
+\[C_W(n) \in O((n + 1)!)\]
+
+\hwnumbersec{4}{4.1}{7}
+
+\begin{center}
+  \begin{tabular}{l l l l l l l}
+    E \textbar & X & A & M & P & L & E' \\
+    E & X \textbar & A & M & P & L & E' \\
+    A & E & X \textbar & M & P & L & E' \\
+    A & E & M & X \textbar & P & L & E' \\
+    A & E & M & P & X \textbar & L & E' \\
+    A & E & L & M & P & X \textbar & E' \\
+    A & E & E' & L & M & P & X \\
+  \end{tabular}
+\end{center}
+
+\hwnumbersec{5}{4.1}{11 (a)}
+
+The array with the largest number of inversion are reverse sorted arrays, since
+every \(A[i]\) would be larger than every subsequent element. Thus, they would
+have
+\[
+  \sum_{i=0}^{n-1} (n - 1 - i) = (n - 1) + (n - 2) + \dots + 2 + 1 = \frac{n(n-1)}{2} 
+\]
+number of inversions.
+
+The smallest number would be sorted arrays and they would have 0 inversions. 
+
+\hwnumbersec{6}{4.4}{8 (a, b, c, d)}
+
+\begin{enumerate}[label = (\alph*)]
+  \item Decrease by a constant factor
+  \item \[C(n) = C\left(\frac{n}{3}\right) + 2\]
+    with \(C(1) = 1\) and \(n = 3^k\)
+  \item 
+    \begin{align*}
+      C(n) &= C(3^k) \\
+           &= C(3^{k-2}) + C(3^{k-1}) + 2 + 2\\
+           &\;\;\;\;\;\vdots \\
+           &= C(3^{k-k}) + \underbrace{2 + 2 + \dots + 2}_{k \text{ times}}\\
+           &= 1 + 2k
+    \end{align*}
+    Since \(n = 3^k\), then \(k = \log_3 n\). So \(C(n) = 2\log_3 n + 1\).
+  \item The efficiency for binary search is \(2\log_2 n + 1\). Since the base
+    of the log is smaller for binary than ternary search, then ternary is more
+    efficient. However, both algorithms are of the same efficiency class. 
+\end{enumerate}
+
+\hwnumbersec{7}{4.5}{2}
+
+We find the median, and since the size of the array is 7 then 
+\[k = \ceil*{7 / 2} = 4\]
+
+We proceed with the quickselect algorithm. 
+
+\begin{center}
+  \begin{tabular}{ccccccc}
+    0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \hline
+    \(s\) & \(i\) \\
+    \textbf{9} & 12 & 5 & 17 & 20 & 30 & 8 \\
+               & \(s\) & \(i\) \\
+    \textbf{9} & 5 & 12 & 17 & 20 & 30 & 8 \\
+               & & \(s\)  & & & &  \(i\) \\
+    \textbf{9} & 5 & 8 & 17 & 20 & 30 & 12 \\
+     8 & 5 & \textbf{9} & 17 & 20 & 30 & 12 \\
+  \end{tabular}
+\end{center}
+
+So \(s = 2 < 3 = k - 1\), and we partition again with the right subarray.
+\begin{center}
+  \begin{tabular}{ccccccc}
+    0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \hline
+      & & & \(s\) & \(i\) \\
+      & & & \textbf{17} & 20 & 30 & 12 \\
+      & & & & \(s\) & & \(i\) \\
+      & & & \textbf{17} & 12 & 30 & 20 \\
+      & & & 12 & \textbf{17} & 30 & 20 \\
+  \end{tabular}
+\end{center}
+
+So \(s = 4 > 3 = k - 1\), and we partition again with the left subarray.
+However, the left subarray is a singleton, so no swaps occur. Thus, \(s = 3 = k
+- 1\) and 12 is the median. 
+
+\hwnumbersec{8}{5.1}{6}
+
+For the first half of the tree we have,
+
+\begin{center}
+\begin{forest}
+for tree={rectangle, draw}
+[\text{E, X, A, M, P, L, E'}
+	[\text{E, X, A}
+	[\text{E}]
+	[\text{X, A}
+		[\text{X}] [\text{A}]
+	]
+	]
+	[\text{M, P, L, E'}
+		[\text{M, P}
+			[\text{M}] [\text{P}]
+		]
+	[\text{L, E'}
+	[\text{L}] [\text{E'}]
+	]
+	]
+]
+\end{forest}
+\end{center}
+
+Merging back, we get
+\begin{center}
+\begin{forest}
+for tree={rectangle, draw, grow=north}
+[\text{A, E, E', L, M, P, X}
+	[\text{E', L, M, P}
+		[\text{E', L}
+			[\text{E'}] [\text{L}]
+		]
+		[\text{M, P}
+			[\text{P}] [\text{M}]
+		]
+	]
+	[\text{A, E, X}
+		[\text{A, X}
+			[\text{A}] [\text{X}]	
+		]
+		[\text{E}]
+	]
+]
+\end{forest}
+\end{center}
+
+\hwnumbersec{9}{5.2}{5 (a, b)}
+
+\begin{enumerate}[label = (\alph*)]
+  \item If the array is made up of all equal elements, then each partition will be
+  exactly in the middle. Thus, this is the best case input.
+  \item If the input is a strictly decreasing array, then there will be and
+    empty subarray every time the array is partitioned. Thus, this is the worst
+    case input. 
+\end{enumerate}
+
+\hwnumbersec{10}{5.3}{8 (a)}
+
+\begin{center}
+\begin{forest}
+	[2
+		[3
+			[9]
+			[0
+				[1]
+				[2]
+			]
+		]
+		[8
+			[7, grow = 300
+				[6]
+			]
+			[5]
+		]
+	]
+\end{forest}
+\end{center}
+
+\end{document}
