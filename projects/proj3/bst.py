@@ -70,20 +70,20 @@ class Tree:
             print("None")
 
     def min(self):
-        return self._min(self.root)
+        return self._min(self.root).val
 
-    def max(self):
-        return self._max(self.root)
-    
     def _min(self, node):
         while node.left:
             node = node.left
-        return node.val
+        return node
+
+    def max(self):
+        return self._max(self.root).val
 
     def _max(self, node):
         while node.right:
             node = node.right
-        return node.val
+        return node
  
     def printTree(self, traversal_type='inorder'):
         if self.root is not None:
