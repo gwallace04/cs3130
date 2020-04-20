@@ -69,16 +69,32 @@ class Tree:
         else:
             print("None")
  
-    def inorder(self):
+    def printTree(self, traversal_type='inorder'):
         if self.root is not None:
-            self._inorder(self.root)
+            if traversal_type == 'preorder':
+                self._preorder(self.root)
+            elif traversal_type == 'postorder':
+                self._postorder(self.root)
+            else:
+                self._inorder(self.root)
     
     def _inorder(self, node):
         if node is not None:
             self._inorder(node.left)
-            #print(str(node.val) + " ", end='')
-            print(node.val)
+            print(str(node.val) + " ", end='')
             self._inorder(node.right)
+
+    def _preorder(self, node):
+        if node is not None:
+            print(str(node.val) + " ", end='')
+            self._preorder(node.left)
+            self._preorder(node.right)
+
+    def _postorder(self, node):
+        if node is not None:
+            self._postorder(node.left)
+            self._postorder(node.right)
+            print(str(node.val) + " ", end='')
 
 
 if __name__ == "__main__":
@@ -89,9 +105,9 @@ if __name__ == "__main__":
     for x in lst:
         tree.insert(x)
 
-    tree.inorder()
+    tree.printTree('inorder')
     print()
-    tree.search(38)
+    tree.printTree('preorder')
     print()
-    tree.search(9)
+    tree.printTree('postorder')
 
