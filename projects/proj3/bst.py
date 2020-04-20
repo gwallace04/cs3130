@@ -50,22 +50,22 @@ class Tree:
             else:
                 node.right = Node(val)
  
-    def find(self, val):
+    def search(self, val):
         if self.root is not None:
-            return self._find(self.root, val)
+            return self._search(self.root, val)
         else:
             return None
  
-    def _find(self, node, val):
+    def _search(self, node, val):
         if val == node.val:
             print(node.val)
             return node
         elif val < node.val and node.left is not None:
             print(node.val)
-            return self._find(node.left, val)
+            return self._search(node.left, val)
         elif val > node.val and node.right is not None:
             print(node.val)
-            return self._find(node.right, val)
+            return self._search(node.right, val)
         else:
             print("None")
  
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
     tree.inorder()
     print()
-    tree.find(38)
+    tree.search(38)
     print()
-    tree.find(9)
+    tree.search(9)
 
