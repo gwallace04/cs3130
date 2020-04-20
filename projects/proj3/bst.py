@@ -5,10 +5,10 @@ A class for a binary search tree.
 """
 
 class Node:
-    def __init__(self,val):
+    def __init__(self,val,left=None,right=None):
         self.val = val
-        self.left = None
-        self.right = None
+        self.left = left
+        self.right = right
         
     def getVal(self):
         return self.val
@@ -49,7 +49,58 @@ class Tree:
                 self._insert(node.right, val)
             else:
                 node.right = Node(val)
- 
+
+    def delete(self, val):
+        if self.root is None:
+            return node
+
+        parent = None
+        node = self.root
+
+        while node and node.val != val:
+            parent = node
+            if val < node.val:
+                node = node.left
+            elif val > node.val:
+                node = node.right
+
+        if node is None or node.val != val:
+            return None
+
+        #Node to remove has no children
+        elif node.left is None and node.right is None:
+            if val < parent.val:
+                parent.left = None
+            elif val > parent.val:
+                parent.right = None
+
+        #Node to remove only has one child
+        elif node.left is None or node.right is None:
+            if val < parent.val:
+                parent.left = node.left
+            elif val > parent.val:
+                parent.right = node.right
+
+        #Node has left and right children
+        else:
+            temp_node = node.right
+            temp_node_parent = node
+            while temp_node.left:
+                temp_node_parent = temp_node
+                temp_node = temp_node.left
+
+            node.val = temp_node.val
+            if temp_node.right:
+                if temp_node_parent.val > temp_node.val:
+                    temp_node_parent.left = temp_node.right
+                elif temp_node_parent.val < temp_node.val:
+                    temp_node_parent.right = temp_node.right
+            else:
+                if temp_node.val < temp_node_parent.val:
+                    temp_node_parent.left = None
+                else:
+                    temp_node_parent.right = None
+
     def search(self, val):
         if self.root is not None:
             return self._search(self.root, val)
@@ -129,7 +180,5 @@ if __name__ == "__main__":
 
     tree.printTree()
     print()
-
-    print(tree.min())
-    print(tree.max())
+    tree.prettyPrint(tree.root)
 
