@@ -120,6 +120,15 @@ class Tree:
         else:
             print("None")
 
+    def height(self):
+        return self._height(self.root)
+
+    def _height(self, node):
+        if node is None:
+            return -1
+        else:
+            return max(self._height(node.left), self._height(node.right)) + 1
+
     def min(self):
         return self._min(self.root).val
 
@@ -181,4 +190,6 @@ if __name__ == "__main__":
     tree.printTree()
     print()
     tree.prettyPrint(tree.root)
+
+    print(tree.height())
 
