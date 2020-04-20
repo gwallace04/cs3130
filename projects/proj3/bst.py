@@ -69,18 +69,18 @@ class Tree:
         else:
             print("None")
 
-    def smallest(self):
-        return self._smallest(self.root)
+    def min(self):
+        return self._min(self.root)
 
-    def largest(self):
-        return self._largest(self.root)
+    def max(self):
+        return self._max(self.root)
     
-    def _smallest(self, node):
+    def _min(self, node):
         while node.left:
             node = node.left
         return node.val
 
-    def _largest(self, node):
+    def _max(self, node):
         while node.right:
             node = node.right
         return node.val
@@ -130,6 +130,6 @@ if __name__ == "__main__":
     tree.printTree()
     print()
 
-    print(tree.smallest())
-    print(tree.largest())
+    print(tree.min())
+    print(tree.max())
 
