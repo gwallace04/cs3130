@@ -96,6 +96,12 @@ class Tree:
             self._postorder(node.right)
             print(str(node.val) + " ", end='')
 
+    def prettyPrint(self, node, level=0):
+        print("  "*level + repr(node.val))
+        if node.left is not None:
+            self.prettyPrint(node.left, level + 1)
+        if node.right is not None:
+            self.prettyPrint(node.right, level + 1)
 
 if __name__ == "__main__":
     lst = [30, 10, 45, 38, 20, 50, 25, 33, 8, 12]
@@ -105,9 +111,5 @@ if __name__ == "__main__":
     for x in lst:
         tree.insert(x)
 
-    tree.printTree('inorder')
-    print()
-    tree.printTree('preorder')
-    print()
-    tree.printTree('postorder')
+    tree.prettyPrint(tree.root)
 
