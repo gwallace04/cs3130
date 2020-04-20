@@ -68,6 +68,22 @@ class Tree:
             return self._search(node.right, val)
         else:
             print("None")
+
+    def smallest(self):
+        return self._smallest(self.root)
+
+    def largest(self):
+        return self._largest(self.root)
+    
+    def _smallest(self, node):
+        while node.left:
+            node = node.left
+        return node.val
+
+    def _largest(self, node):
+        while node.right:
+            node = node.right
+        return node.val
  
     def printTree(self, traversal_type='inorder'):
         if self.root is not None:
@@ -111,5 +127,9 @@ if __name__ == "__main__":
     for x in lst:
         tree.insert(x)
 
-    tree.prettyPrint(tree.root)
+    tree.printTree()
+    print()
+
+    print(tree.smallest())
+    print(tree.largest())
 
