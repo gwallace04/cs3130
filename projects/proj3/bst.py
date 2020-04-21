@@ -187,9 +187,40 @@ if __name__ == "__main__":
     for x in lst:
         tree.insert(x)
 
-    tree.printTree()
+    print("From the following list we create the below binary search tree")
+    print(lst)
     print()
     tree.prettyPrint(tree.root)
+    print()
+    print("Traversing the tree we have:")
+    print("Inorder: ", end='') 
+    tree.printTree('inorder')
+    print("\nPreorder: ", end='')
+    tree.printTree('preorder')
+    print("\nPostorder: ", end='')
+    tree.printTree('postorder')
+    print("\n")
+    print("The height of the tree is {}".format(tree.height()))
+    print("The largest and smallest keys are {} and {} respectively".format(
+        tree.min(), tree.max()))
+    print()
+    print("Searching for 38 yields the following search sequence:")
+    tree.search(38)
+    print("Searching for 9 yields the following search sequence:")
+    tree.search(9)
+    print("\nDeleting the node with value 10\n")
+    tree.delete(10)
+    tree.prettyPrint(tree.root)
+    print()
+    print("Traversing the tree now we have:")
+    print("Inorder: ", end='') 
+    tree.printTree('inorder')
+    print("\nPreorder: ", end='')
+    tree.printTree('preorder')
+    print("\nPostorder: ", end='')
+    tree.printTree('postorder')
+    print()
+    
 
-    print(tree.height())
+            
 
