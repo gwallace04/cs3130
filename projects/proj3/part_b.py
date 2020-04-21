@@ -19,7 +19,8 @@ def get_avg_height(N: int, t: int, print_statements=False) -> float:
 
         height_sum += tree.height()
         if print_statements:
-            print("The height of the tree is", tree.height())
+            print("The height of the tree with {} nodes is {}".format(
+                N, tree.height()))
     avg = height_sum / t 
     if print_statements:
         print("The average height is", avg)
@@ -27,7 +28,7 @@ def get_avg_height(N: int, t: int, print_statements=False) -> float:
         
 
 if __name__ == "__main__":
-    #get_avg_height(100, 5, print_statements=True)
+    get_avg_height(100, 5, print_statements=True)
 
 
     lol = []
