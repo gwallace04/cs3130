@@ -1,0 +1,61 @@
+\documentclass[letterpaper, 11pt]{article}
+%\usepackage[hmargin = 1in, vmargin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage[linguistics]{forest}
+% \doublespacing
+\setlength{\headheight}{14pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Gabriel Wallace}
+\lhead{Comp Sci 3130}
+
+\newcommand{\card}{\text{Card}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\hwnumber}[1]{\medskip \noindent\textbf{#1.} \smallskip}
+\newcommand{\hwnumbersec}[3]{\medskip \noindent\textbf{#1.} Section #2 \##3 \smallskip}
+\newcommand{\Mod}[1]{\ \mathrm{mod}\ #1}
+\newcommand{\Alg}[1]{\medskip \noindent\textbf{ALGORITHM} \( #1 \)} 
+\newcommand{\To}{\textbf{ to }}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\begin{document}
+The table of the results from Part B is as follows:
+\begin{center}
+\begin{tabular}{rrr}
+  \(N\) &   \(t\) &  Average Height \\
+    \hline
+  100 &   5 &   12.200000 \\
+  100 &  10 &   12.700000 \\
+  100 &  15 &   11.666667 \\
+  500 &   5 &   17.200000 \\
+  500 &  10 &   18.400000 \\
+  500 &  15 &   18.466667 \\
+ 1000 &   5 &   21.000000 \\
+ 1000 &  10 &   20.500000 \\
+ 1000 &  15 &   21.866667 \\
+\end{tabular}
+\end{center}
+
+In the code for the binary search tree class, the first check for inserting a
+new node is if the value of the node to be inserted is less than the root.
+Thus, duplicates would be the right child of the existing duplicate.
+
+The theoretical efficiency of the algorithm to find the height is
+\(\Theta(n)\).
+
+\end{document}
