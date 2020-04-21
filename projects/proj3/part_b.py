@@ -5,6 +5,7 @@ Gets the average height of binary search trees of various sizes
 """
 
 import random
+import pandas as pd
 
 from bst import Tree, Node
 
@@ -26,9 +27,16 @@ def get_avg_height(N: int, t: int, print_statements=False) -> float:
         
 
 if __name__ == "__main__":
-    print(get_avg_height(100, 5, print_statements=True))
+    #get_avg_height(100, 5, print_statements=True)
 
+
+    lol = []
+    header = ['N', 't', 'avg_height']
+       
     for N in [100, 500, 1000]:
         for t in [5, 10, 15]:
-            print("{}, {}, {}".format(
-                N, t, get_avg_height(N, t)))
+            temp = [N, t, get_avg_height(N, t)]
+            lol.append(temp)
+            
+    df = pd.DataFrame(lol, columns = header)
+    print(df.to_latex(index=False))
