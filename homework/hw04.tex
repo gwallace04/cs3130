@@ -25,8 +25,8 @@
 
 \newcommand{\inv}{^{-1}}
 \newcommand{\abs}[1]{\lvert #1 \rvert}
-\newcommand{\hwnumber}[1]{\medskip \noindent\textbf{#1.} \smallskip}
-\newcommand{\hwnumbersec}[3]{\medskip \noindent\textbf{#1.} Section #2 \##3 \smallskip}
+\newcommand{\hwnumber}[1]{\newpage \noindent\textbf{#1.} \smallskip}
+\newcommand{\hwnumbersec}[3]{\newpage \noindent\textbf{#1.} Section #2 \##3 \smallskip}
 \newcommand{\Mod}[1]{\ \mathrm{mod}\ #1}
 \newcommand{\Alg}[1]{\medskip \noindent\textbf{ALGORITHM} \( #1 \)} 
 \newcommand{\To}{\textbf{ to }}
@@ -34,11 +34,8 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 \begin{document}
-\begin{center}
-	{\LARGE Homework 4}\\
-\end{center}
 
-\hwnumbersec{1}{5.4}{2}
+\hwnumber{1}
 
 We want to multiply 2101 and 1130. We have 
 \begin{align*}
@@ -86,9 +83,12 @@ Putting it all together, we have
               &= 2,374,130
 \end{align*}
 
-\hwnumbersec{2}{11.2}{2(a)}
+\hwnumber{2}
 
-This one is a decision tree.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_2.jpg}
+\end{figure}
 
 \hwnumber{3}
 \begin{enumerate}[label = (\alph*)]
@@ -106,20 +106,69 @@ This one is a decision tree.
     2n\) and \(T(n) \in \Theta(n)\).
 \end{enumerate}
 
-\hwnumber{4}
+\newpage
+\hwnumber{4 (b)}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_4.jpg}
+\end{figure}
+
+\hwnumber{4 (c)}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num4_c.jpg}
+\end{figure}
 
 \hwnumber{5}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_5.jpg}
+\end{figure}
 
-\hwnumber{6}
+\hwnumber{6(a)}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_6.jpg}
+\end{figure}
+
+\hwnumber{6(b)}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_6_b.jpg}
+\end{figure}
 
 \hwnumber{7}
 
+First, we create the max heap, and then we proceed with the deleting procedure. 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_7_first.jpg}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_7_second.jpg}
+\end{figure}
+
 \hwnumber{8}
 
+A counterexample is if we want to sort the array 5, 5', 3, where we denote the
+second 5 with 5'. 
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_8.jpg}
+\end{figure}
+
+Then the sorted array becomes 3, 5, 5'. So the two fives are swapped. 
+
 \hwnumber{9}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{pics/num_9.jpg}
+\end{figure}
 
 \hwnumber{10}
-
 The frequency and distribution arrays are as follows.
 
 \begin{center}
